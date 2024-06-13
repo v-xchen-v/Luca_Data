@@ -6,6 +6,10 @@
     <child link="R_index_intermediate"/>
     <axis xyz="1. 0. 0."/>
     <limit lower="0." upper="1.7" effort="1." velocity="0.5"/>
+    <mimic 
+      joint="R_index_proximal_joint"
+      multiplier="1"
+      offset="0" />
   </joint>
   <joint name="R_index_proximal_joint" type="revolute">
     <origin xyz="-0.0019979 -0.0322073 0.1459396" rpy="1.5707963 0.0348923 -1.6415926"/>
@@ -20,6 +24,10 @@
     <child link="R_middle_intermediate"/>
     <axis xyz="1. 0. 0."/>
     <limit lower="0." upper="1.7" effort="1." velocity="0.5"/>
+    <mimic 
+      joint="R_middle_proximal_joint"
+      multiplier="1"
+      offset="0" />
   </joint>
   <joint name="R_middle_proximal_joint" type="revolute">
     <origin xyz="-0.0006314 -0.0129377 0.1465096" rpy="1.5707963 -0.0000077 -1.6415926"/>
@@ -34,6 +42,10 @@
     <child link="R_pinky_intermediate"/>
     <axis xyz="1. 0. 0."/>
     <limit lower="0." upper="1.7" effort="1." velocity="0.5"/>
+      <mimic 
+      joint="R_pinky_proximal_joint"
+      multiplier="1"
+      offset="0" />
   </joint>
   <joint name="R_pinky_proximal_joint" type="revolute">
     <origin xyz="0.0020876 0.025404 0.1451196" rpy="1.5707963 -0.104693 -1.6415926"/>
@@ -48,6 +60,10 @@
     <child link="R_ring_intermediate"/>
     <axis xyz="1. 0. 0."/>
     <limit lower="0." upper="1.7" effort="1." velocity="0.5"/>
+    <mimic 
+      joint="R_ring_proximal_joint"
+      multiplier="1"
+      offset="0" />
   </joint>
   <joint name="R_ring_proximal_joint" type="revolute">
     <origin xyz="0.0007294 0.0062513 0.1463196" rpy="1.5707963 -0.0523931 -1.6415926"/>
@@ -56,17 +72,35 @@
     <axis xyz="1. 0. 0."/>
     <limit lower="0." upper="1.7" effort="1." velocity="0.5"/>
   </joint>
-  <joint name="R_thumb_distal_joint" type="continuous">
+  <joint name="R_thumb_distal_joint" type="revolute">
     <origin xyz="-0.0012 0.010156 -0.020248" rpy="0. 0. 0."/>
     <parent link="R_thumb_intermediate"/>
     <child link="R_thumb_distal"/>
     <axis xyz="1. 0. 0."/>
+      <limit
+      lower="0"
+      upper="1.2"
+      effort="1"
+      velocity="0.5" />
+    <mimic 
+      joint="R_thumb_proximal_pitch_joint"
+      multiplier="2.4"
+      offset="0" />
   </joint>
-  <joint name="R_thumb_intermediate_joint" type="continuous">
+  <joint name="R_thumb_intermediate_joint" type="revolute">
     <origin xyz="-0.0008 0.034553 -0.04407 " rpy="0. 0. 0."/>
     <parent link="R_thumb_proximal"/>
     <child link="R_thumb_intermediate"/>
     <axis xyz="1. 0. 0."/>
+      <limit
+      lower="0"
+      upper="0.8"
+      effort="1"
+      velocity="0.5" />
+    <mimic 
+      joint="R_thumb_proximal_pitch_joint"
+      multiplier="1.6"
+      offset="0" />
   </joint>
   <joint name="R_thumb_proximal_pitch_joint" type="revolute">
     <origin xyz="0.00925 0.010892 -0.0088099" rpy="0.0000011 -0.2828926 1.5707926"/>
@@ -325,13 +359,13 @@
     <visual>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
-        <cylinder radius="0.03" length="0.0038"/>
+        <mesh filename="meshes/R_hand_flange.STL" scale="1. 1. 1."/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
-        <cylinder radius="0.03" length="0.0038"/>
+        <mesh filename="meshes/R_hand_flange.STL" scale="1. 1. 1."/>
       </geometry>
     </collision>
   </link>
