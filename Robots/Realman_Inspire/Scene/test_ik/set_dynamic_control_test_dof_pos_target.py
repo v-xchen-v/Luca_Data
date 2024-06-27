@@ -3,7 +3,7 @@ import random
 
 dc = _dynamic_control.acquire_dynamic_control_interface()
 
-art = dc.get_articulation("/World/Realman_Inspire_R_mimic/Realman_Inspire_R")
+art = dc.get_articulation("/World/Realman_Inspire_mimic/Realman_Inspire_R")
 
 num_joints = dc.get_articulation_joint_count(art)
 print(num_joints)
@@ -14,9 +14,11 @@ thumb_yaw_angle_range = [0, 75]
 thumb_pitch_angle_range = [-5, 35]
 joint_angle_range = [-130, 130]
 
-fk_angles = [ 1.2678,  0.2810,  1.2657,  1.4079,  0.1925,  0.5950,  0.5630,  1.8624,
-         2.9764,  2.1511,  0.1759, -0.3144, -4.0239]
-angles = fk_angles    
+gt_angles = [ 1.4647,  0.4758,  0.6915,  1.5356,  0.1321,  0.7825,  2.8073,  1.1322,
+        -0.1473,  1.6007, -1.8437, -0.2918,  4.0199]
+opt_angles = [ 1.4647,  0.4758,  0.6915,  1.5356,  0.1321,  0.7825,  0.2157, -1.5462,
+         2.0039,  1.6007, -1.1895, -1.1193, -2.1960]
+angles = opt_angles       
 
 index_pos = angles[0]
 middle_pos = angles[1]
@@ -88,7 +90,6 @@ dc.set_dof_position_target(arm_joint7, joint7_pos)
 # print dof state
 dof_state = dc.get_dof_state(index_dof_ptr, _dynamic_control.STATE_ALL)
 print(dof_state)
-
 
 
 
